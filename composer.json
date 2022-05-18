@@ -1,0 +1,39 @@
+{
+  "name": "tuzex/ddd-shared-kernel",
+  "description": "Shared model for Domain Driven Design (DDD) project in PHP",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Edo Barnas",
+      "email": "iam@edobarnas.com"
+    }
+  ],
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "composer/package-versions-deprecated": true
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Tuzex\\Ddd\\SharedKernel\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tuzex\\Ddd\\SharedKernel\\Test\\": "tests/"
+    }
+  },
+  "require": {
+    "php": "^8.1",
+    "doctrine/dbal": "2.12.*|3.*",
+    "webmozart/assert": "1.10.*"
+  },
+  "require-dev": {
+    "phpstan/phpstan": "1.6.*",
+    "phpstan/phpstan-phpunit": "1.1.*",
+    "phpunit/phpunit": "9.5.*",
+    "symplify/easy-coding-standard": "10.2.*"
+  }
+}
