@@ -17,13 +17,18 @@ final class Money
 
     final public const ROUND_HALF_UP = PHP_ROUND_HALF_UP;
 
-    private readonly int $amountInFractionalUnit;
+    public readonly float $amountInMainUnit;
+
+    public readonly int $amountInFractionalUnit;
 
     public function __construct(
         int|float $amount,
         public readonly Currency $currency,
     ) {
-        $this->amountInFractionalUnit = intval($amount * $this->currency->fraction());
+        $fraction = $this->currency->fraction();
+
+        $this->amountInFractionalUnit = intval($amount * $fraction);
+        $this->amountInMainUnit = floatval($this->amountInFractionalUnit / $fraction);
     }
 
     public static function ofSub(int $amount, Currency $currency): self
@@ -139,11 +144,6 @@ final class Money
     public function changeToNegative(): self
     {
         return self::ofSub(-1 * $this->amountInFractionalUnit, $this->currency);
-    }
-
-    public function amountInMainUnit(): float
-    {
-        return $this->amountInFractionalUnit / $this->currency->fraction();
     }
 
     private function compare(self $that): int

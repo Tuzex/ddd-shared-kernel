@@ -65,12 +65,12 @@ final class CurrencyType extends Type
         return true;
     }
 
-    private function supportsCurrency(Currency $currency): bool
+    public function supportsCurrency(Currency $currency): bool
     {
         return $this->supportsCurrencyCode($currency->code());
     }
 
-    private function supportsCurrencyCode(string $code): bool
+    public function supportsCurrencyCode(string $code): bool
     {
         return array_key_exists($code, self::CURRENCY_MAP);
     }
